@@ -1,0 +1,77 @@
+{
+  "EDITOR_STATE": {
+    "allProjectFiles": {
+      "d7687fcf-a50e-4ebb-add6-88f2628f583e": {
+        "id": "d7687fcf-a50e-4ebb-add6-88f2628f583e",
+        "parent": null,
+        "name": "AMKPROJECT",
+        "type": "DIRECTORY",
+        "isDirectory": true,
+        "children": [
+          "201293a6-0364-4186-a089-c09c3b200803"
+        ],
+        "isRemovable": false,
+        "filePath": "AMKPROJECT"
+      },
+      "201293a6-0364-4186-a089-c09c3b200803": {
+        "id": "201293a6-0364-4186-a089-c09c3b200803",
+        "parent": "d7687fcf-a50e-4ebb-add6-88f2628f583e",
+        "name": "lambda.js",
+        "type": "LAMBDA_FILE",
+        "isDirectory": false,
+        "children": [],
+        "isRemovable": true,
+        "filePath": "AMKPROJECT/lambda.js",
+        "code": "\nlet Swagger = require('swagger-client');\n\nexports.handler = function (event, context, callback) {\n\n    Swagger.http({\n        url: 'https://services.uat.fintechmart.online/api-sandbox/application/token',\n        method: 'post',\n        query: {},\n        headers: { \"Accept\": \"*/*\", \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n            \"userName\": \"Your email address\",\n            \"password\": \"Your password\"\n        })\n    }).then((response) => {\n        var access_token = \"bearer \" + response.body.access_token;\n        // Insert new API calls here to call with APIX Access Token\n\n\n        callback(null, access_token);\n    }).catch((err) => {\n        console.log(err);\n        callback(\"Execution failed\");\n    });\n\n}",
+        "triggers": [],
+        "config": {
+          "runtime": "nodejs8.10",
+          "timeout": 60,
+          "memory": 128
+        }
+      }
+    },
+    "deletedFiles": [],
+    "rootNode": "d7687fcf-a50e-4ebb-add6-88f2628f583e",
+    "openFiles": [
+      "201293a6-0364-4186-a089-c09c3b200803"
+    ],
+    "currentFileId": "201293a6-0364-4186-a089-c09c3b200803",
+    "resources": {},
+    "envVariables": [
+      {
+        "lambdaId": "all",
+        "varKey": "SIGMA_AWS_ACC_ID",
+        "varValue": null,
+        "shouldPersist": false,
+        "displayOnly": false,
+        "editable": false
+      }
+    ],
+    "packageJSON": {
+      "dependencies": {
+        "swagger-client": {
+          "name": "swagger-client",
+          "version": "3.8.21"
+        }
+      }
+    },
+    "lambdaId": "201293a6-0364-4186-a089-c09c3b200803"
+  },
+  "PROJECT_META": {
+    "projectName": "AMKPROJECT",
+    "projectDescription": "AMKDESCRIPTION",
+    "projectVersion": "1.0.0",
+    "projectRegion": "us-east-1",
+    "platform": "AWS",
+    "platformRegions": {},
+    "lastSave": 1558032436605
+  },
+  "VCS_STATE": {
+    "provider": "GitHub",
+    "repo": {
+      "name": "AMKPROJECT",
+      "url": "https://github.com/majidkazi/AMKPROJECT"
+    }
+  }
+}

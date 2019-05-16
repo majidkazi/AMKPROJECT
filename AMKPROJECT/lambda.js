@@ -1,3 +1,5 @@
+let SL_XML = require('slappforge-sdk-xml');
+const xmlParser = new SL_XML.XMLParser();
 
 let Swagger = require('swagger-client');
 

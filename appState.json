@@ -22,7 +22,7 @@
         "children": [],
         "isRemovable": true,
         "filePath": "AMKPROJECT/lambda.js",
-        "code": "\nlet Swagger = require('swagger-client');\n\nexports.handler = function (event, context, callback) {\n\n    Swagger.http({\n        url: 'https://services.uat.fintechmart.online/api-sandbox/application/token',\n        method: 'post',\n        query: {},\n        headers: { \"Accept\": \"*/*\", \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n            \"userName\": \"Your email address\",\n            \"password\": \"Your password\"\n        })\n    }).then((response) => {\n        var access_token = \"bearer \" + response.body.access_token;\n        // Insert new API calls here to call with APIX Access Token\n\n\n        callback(null, access_token);\n    }).catch((err) => {\n        console.log(err);\n        callback(\"Execution failed\");\n    });\n\n}",
+        "code": "let SL_XML = require('slappforge-sdk-xml');\nconst xmlParser = new SL_XML.XMLParser();\n\nlet Swagger = require('swagger-client');\n\nexports.handler = function (event, context, callback) {\n\n    Swagger.http({\n        url: 'https://services.uat.fintechmart.online/api-sandbox/application/token',\n        method: 'post',\n        query: {},\n        headers: { \"Accept\": \"*/*\", \"Content-Type\": \"application/json\" },\n        body: JSON.stringify({\n            \"userName\": \"Your email address\",\n            \"password\": \"Your password\"\n        })\n    }).then((response) => {\n        var access_token = \"bearer \" + response.body.access_token;\n        // Insert new API calls here to call with APIX Access Token\n\n\n        callback(null, access_token);\n    }).catch((err) => {\n        console.log(err);\n        callback(\"Execution failed\");\n    });\n\n}",
         "triggers": [],
         "config": {
           "runtime": "nodejs8.10",
@@ -53,6 +53,11 @@
         "swagger-client": {
           "name": "swagger-client",
           "version": "3.8.21"
+        },
+        "slappforge-sdk-xml": {
+          "name": "slappforge-sdk-xml",
+          "version": "0.0.5",
+          "notRemovable": false
         }
       }
     },
@@ -65,7 +70,7 @@
     "projectRegion": "us-east-1",
     "platform": "AWS",
     "platformRegions": {},
-    "lastSave": 1558032436605
+    "lastSave": 1558033779633
   },
   "VCS_STATE": {
     "provider": "GitHub",
